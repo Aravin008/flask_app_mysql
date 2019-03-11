@@ -1,0 +1,28 @@
+sudo: required
+services:
+- docker
+language: python
+python:
+- '3.5'
+stages:
+- name: test
+- name: build and push docker image
+#- name: deploy2
+jobs:
+  include:
+  - stage: test
+    script:
+   # - python -m pytest -v
+   # - bandit -r buzz/
+    echo "Finished Testing"
+  - stage: build and push docker image
+    install: skip
+    script:
+    - echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+    - export REPO="aravin008/flaskapp"
+    - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo
+      $TRAVIS_BRANCH ; fi`
+    - docker build -f Dockerfile -t $REPO:$TAG .
+    - docker image ls
+    - echo "REPO:$REPO"
+    - docker push $REPO
