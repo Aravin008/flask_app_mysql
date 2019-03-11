@@ -7,14 +7,11 @@ python:
 stages:
 - name: test
 - name: build and push docker image
-##- name: deploy2
 jobs:
   include:
   - stage: test
     script:
-   # - python -m pytest -v
-   # - bandit -r buzz/
-    echo "Finished Testing"
+    - echo "Finished Testing"
   - stage: build and push docker image
     install: skip
     script:
@@ -26,3 +23,6 @@ jobs:
     - docker image ls
     - echo "REPO:$REPO"
     - docker push $REPO
+env:
+  global:
+    secure: ZVOzJFAOiufNtF7EQ6DrWfsl5UCB9fsy0QdvntxeVVuMJ9tGgYzRa56ZtQE2u49MN5Ma5FTB+gpoXjQXFoYmPx2BAU+aO403C3I4gT0o4C3hXLVuelml8w1FIfWmVCsiDrH6Iu/IfYAEg6odbqp2AHafmV9A6hiWffmzhMg1eDf/vQDWkkdM7yPbU+8UcA2uVEvO2zZF++mvp58ddhClyhqmXzX83lPrNk8JyU7b6DLN95vTg9TTh1mKqEWGNdjz0gTLtYEogTx6xdLBRzGQiLq3LIGPxOJNYmYcbRveWKrH5qZ+O87GFPmXeItUP9JY6C3iLZFLzdapdFZS5gjwk6/nzh/uPNCoFfI10+7pQrhadmweVq1vUmrCXuHkraeichTKfeES0p6VCb5rG7NbEjl/yzK8hxzKvuJSkhThTH43H5q9JagZPzRBVXZTcIs8mO6U6ZNWj7C5CSDnFuTXuJ7isSdzfVg36/x4GEqMx6GxZEjDa7zvLZPgxNyaqm9PtbvfwVbU14AXasSG5m8kwuvQkVqx7+FhmT2MFeSCz6i/DctMO/FRoSBDMCqM9M6adr8Mv3gFPUC7GPl1A9+jyckH2JUnDrHsiH9BWhRyhb3y1cGJyJcfbnGaL+qvO+F+LOIXH1Rh0Gwo6MxXGb0/+xmrcJgaTWjr2Kqa9BcW8rc=
