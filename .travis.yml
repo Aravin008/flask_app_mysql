@@ -7,7 +7,7 @@ python:
 stages:
 - name: test
 - name: build and push docker image
-#- name: deploy2
+##- name: deploy2
 jobs:
   include:
   - stage: test
