@@ -11,8 +11,7 @@ jobs:
   include:
   - stage: test
     script:
-    - pytest -v
-    - bandit -r app.py -e B104
+    - bandit -r app.py -s B104
     - echo "Finished Testing"
   - stage: build and push docker image
     install: skip
