@@ -7,6 +7,7 @@ sudo docker rm flapdb
 #sudo docker rm my-sql
 sudo docker rmi aravin008/flaskapp
 #sudo docker rmi aravin008/my-sql
+sudo docker pull aravin008/my-sql
 sudo docker run --detach --name=my-sql --env="MYSQL_ROOT_PASSWORD=mysql" aravin008/my-sql
 sudo docker run --detach --name flapdb --publish 80:5000 --link my-sql:mysql aravin008/flaskapp
 mysql -u root -p 'mysql' BucketList < createtable.sql
