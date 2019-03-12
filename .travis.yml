@@ -17,12 +17,22 @@ jobs:
     script:
     - echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
     - export REPO="aravin008/flaskapp"
+    - export REPO2="aravin008/my-sql"
     - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo
       $TRAVIS_BRANCH ; fi`
     - docker build -f Dockerfile -t $REPO:$TAG .
+    - cd mysql-img
+    - docker build -f Dockerfile -t $REPO2:$TAG .
+    - cd ..
     - docker image ls
     - echo "REPO:$REPO"
     - docker push $REPO
+    - docker push $REPO2
+    
 env:
   global:
-    secure: ZVOzJFAOiufNtF7EQ6DrWfsl5UCB9fsy0QdvntxeVVuMJ9tGgYzRa56ZtQE2u49MN5Ma5FTB+gpoXjQXFoYmPx2BAU+aO403C3I4gT0o4C3hXLVuelml8w1FIfWmVCsiDrH6Iu/IfYAEg6odbqp2AHafmV9A6hiWffmzhMg1eDf/vQDWkkdM7yPbU+8UcA2uVEvO2zZF++mvp58ddhClyhqmXzX83lPrNk8JyU7b6DLN95vTg9TTh1mKqEWGNdjz0gTLtYEogTx6xdLBRzGQiLq3LIGPxOJNYmYcbRveWKrH5qZ+O87GFPmXeItUP9JY6C3iLZFLzdapdFZS5gjwk6/nzh/uPNCoFfI10+7pQrhadmweVq1vUmrCXuHkraeichTKfeES0p6VCb5rG7NbEjl/yzK8hxzKvuJSkhThTH43H5q9JagZPzRBVXZTcIs8mO6U6ZNWj7C5CSDnFuTXuJ7isSdzfVg36/x4GEqMx6GxZEjDa7zvLZPgxNyaqm9PtbvfwVbU14AXasSG5m8kwuvQkVqx7+FhmT2MFeSCz6i/DctMO/FRoSBDMCqM9M6adr8Mv3gFPUC7GPl1A9+jyckH2JUnDrHsiH9BWhRyhb3y1cGJyJcfbnGaL+qvO+F+LOIXH1Rh0Gwo6MxXGb0/+xmrcJgaTWjr2Kqa9BcW8rc=
+  - secure: jjsb2INFnp6fwRUacGpjKIEpsRhhTby8qLY8JVkMJdhZOI2ZrEM114cw/T8+aABrFQKMbj3IV5qGPNQw6F9jWOPz2PwQba4iInU5aHGNvgA/VB/yBaWvq7bdpsnIDlWIo6pPkgMBIGZR+y1sxc0ofevqSQuFJv+euPE/5Psg9G199h7fRTGZ8+gYXqgg9GDLOyrecwIGeWOnC0/sXShN1QA3or7NCKSu3pNXi7gbgUcTclYdU8hjkP1G+mtAfGeEuYQ2VbQ7wtBzhwuvZQAHr+hbmpBICOaSBhNgxwBiZfSKvGPhDZfi+5r6trkymmi2KlaZaMUhH3+e/OEhx0hNGuQGlAvc/bqwbMxkjM6ak578fDkAwO+jWnBvPTxTkxyu4XEZne1bjH9vh+OYS8VurgZJUsee1rGzTsdiVFaOl2/h6HgR/q9r8nm4plpBMe2MKRHoE1JQEBB12dlAXWsck2MrSx4dRbUKl4x5QaDr/7PHekc4L+o1rqGS183wOocA571L95XlqfUYGb6jB8WhfATkvFBvIhrlO+9IHqYtfislC8TRl6JZjgpnIgxdqT8/WQUKgZp4uwLbEVK4rujhuC/Cc6efSiFrmoiAXZa2EGAtzPC77m9d/y2d1p7IZp0x3lujsegnWoxpmsIpHsweWh9dGX10n5Q3kMy1d9d4CUE=
+  - secure: qU7WirFX1aB0+L/jBULTI7RZ6nOMZRFvnew1hEwxCuoC94OD+UTrAG0q8n9xzeq6sSs5lLKdiUm5CYZ/5P1hVc2rfuoDwSZq9t8PxjXlQY4ALn/c9BGqtcA4CWTIWOjkk4Oe0SnhU5zKyY/heJ0u6wsYeLW+BB10eZ5va6mIJyWPghcfnoorYCACr/SFeRI9Q2JztG95utvsz40bt/f/LrEB92V+24C4Q2JRH8UiOmDn5ZE7y5T/IecJh0kGoKnd+7G2kaz2HqmWJXpX4OeuVzjWpi4+4815ILYvJUUC5V8UXR3sIqoOCdrJnpvYcijBDNyK9coUHlGqxAur1NGFQPOb9bmXErJHhDvPoYOoX7K2e0vq9e0A8hGSaO0jcdzFRF0+9/ucTkbqJ6McYDFlB1Lip8jKoj8UaXt0QNSWmhFTKX8Tp3L0DhQd9wIe6Klhd/0l6e70CmXt5WwI3ccOt6zpBaRr8Slx5P6pZr7Q1ZEYIL3O4sP5Q3eu1W4o68DgLqpupvAMt51h6jY1DFm6/iOu0votJ4mtV0kyXc0QJNDNwCEzvF8P/nV3tp0k/UJr3KmjAOL78wuI7zLjF6lt1KL9mQFVzTzORvdvWfy4Dp0ei/HcsOikNOH0BmJqOyU98Ar6vTWuiokgsrnNVOkhncI9wVo9kIingsgvcTt+SVg=
+before_install:
+- openssl aes-256-cbc -K $encrypted_937fc597ef3a_key -iv $encrypted_937fc597ef3a_iv
+  -in login_mar12.pem.enc -out login_mar12.pem -d

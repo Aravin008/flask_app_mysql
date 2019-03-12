@@ -24,7 +24,7 @@ def main():
 def showSignUp():
     return render_template('signup.html')
 
-@app.route('/signUp',methods=['POST','GET'])
+@app.route('/signUp', methods=['POST', 'GET'])
 def signUp():
     try:
         _name = request.form['inputName']
@@ -39,7 +39,7 @@ def signUp():
             # All Good, let's call MySQL
             print('All good!!')
             _hashed_password = generate_password_hash(_password)
-            cursor.callproc('sp_createUser',(_name,_email,_hashed_password))
+            cursor.callproc('sp_createUser', (_name, _email, _hashed_password))
             data = cursor.fetchall()
 
             if len(data) is 0:
