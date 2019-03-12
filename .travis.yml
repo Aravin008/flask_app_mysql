@@ -31,15 +31,17 @@ jobs:
     - docker push $REPO2
   - stage: deploy2
     env:
-    - secure: jjsb2INFnp6fwRUacGpjKIEpsRhhTby8qLY8JVkMJdhZOI2ZrEM114cw/T8+aABrFQKMbj3IV5qGPNQw6F9jWOPz2PwQba4iInU5aHGNvgA/VB/yBaWvq7bdpsnIDlWIo6pPkgMBIGZR+y1sxc0ofevqSQuFJv+euPE/5Psg9G199h7fRTGZ8+gYXqgg9GDLOyrecwIGeWOnC0/sXShN1QA3or7NCKSu3pNXi7gbgUcTclYdU8hjkP1G+mtAfGeEuYQ2VbQ7wtBzhwuvZQAHr+hbmpBICOaSBhNgxwBiZfSKvGPhDZfi+5r6trkymmi2KlaZaMUhH3+e/OEhx0hNGuQGlAvc/bqwbMxkjM6ak578fDkAwO+jWnBvPTxTkxyu4XEZne1bjH9vh+OYS8VurgZJUsee1rGzTsdiVFaOl2/h6HgR/q9r8nm4plpBMe2MKRHoE1JQEBB12dlAXWsck2MrSx4dRbUKl4x5QaDr/7PHekc4L+o1rqGS183wOocA571L95XlqfUYGb6jB8WhfATkvFBvIhrlO+9IHqYtfislC8TRl6JZjgpnIgxdqT8/WQUKgZp4uwLbEVK4rujhuC/Cc6efSiFrmoiAXZa2EGAtzPC77m9d/y2d1p7IZp0x3lujsegnWoxpmsIpHsweWh9dGX10n5Q3kMy1d9d4CUE=
-    - secure: qU7WirFX1aB0+L/jBULTI7RZ6nOMZRFvnew1hEwxCuoC94OD+UTrAG0q8n9xzeq6sSs5lLKdiUm5CYZ/5P1hVc2rfuoDwSZq9t8PxjXlQY4ALn/c9BGqtcA4CWTIWOjkk4Oe0SnhU5zKyY/heJ0u6wsYeLW+BB10eZ5va6mIJyWPghcfnoorYCACr/SFeRI9Q2JztG95utvsz40bt/f/LrEB92V+24C4Q2JRH8UiOmDn5ZE7y5T/IecJh0kGoKnd+7G2kaz2HqmWJXpX4OeuVzjWpi4+4815ILYvJUUC5V8UXR3sIqoOCdrJnpvYcijBDNyK9coUHlGqxAur1NGFQPOb9bmXErJHhDvPoYOoX7K2e0vq9e0A8hGSaO0jcdzFRF0+9/ucTkbqJ6McYDFlB1Lip8jKoj8UaXt0QNSWmhFTKX8Tp3L0DhQd9wIe6Klhd/0l6e70CmXt5WwI3ccOt6zpBaRr8Slx5P6pZr7Q1ZEYIL3O4sP5Q3eu1W4o68DgLqpupvAMt51h6jY1DFm6/iOu0votJ4mtV0kyXc0QJNDNwCEzvF8P/nV3tp0k/UJr3KmjAOL78wuI7zLjF6lt1KL9mQFVzTzORvdvWfy4Dp0ei/HcsOikNOH0BmJqOyU98Ar6vTWuiokgsrnNVOkhncI9wVo9kIingsgvcTt+SVg=
+    - secure: ks7qZAdRvL63o+q7gY/aiX0ea6426NyIeDN8+XPtHfiz3dt/oNvrrjTkb1ThvYaUjyQUk98gUQvQDJd4zN6QFCPNXFSqJTqtzif8TAft3cMY75opQIwwWQ/xQxVWmKv/H/06WPU0Gx1nRUQ5btxgGapyyz+b/cIGrm7nzCBEYUaksC9ztWiD1NIW/JgwDmjnNcWJTRBc7gKqC0gCnW2x8wujANAF7AaEVQYbRc9XnKv8KJn0hBc9rJhGFZps/VxIFnOchobUF7DmGD5Y3APe4cJtAJ55VNy1KeAiFwlI9YY5+eiUGEfSafsT8vA17yJl54R945MqgbmbAI4tAL+ihx2xPkbNTJsg1A0wjMUV/2uvXFVBBEAik1onRhb03duPx/kAIWo2MTfA2RSs6cVQzhDhee+oqQk0TvD0BYSU1wSg3CppgwQePqFlJtK9l7K8f94qBIZ6vKMhIho2q00VvVFv35MK8EBJ9kX+1Nr9y4PQ1XHsah8lQTsjZnq87M1r4mkaU54p1xmasiEjH/KtxV/GKgLA+6roRxoePU8jW8fztT0/z3P4oW8aNeZXalYbT+EV7LwGIix2NZtX26N0r7QEl5r4vYhvxZxSRv4+NoV/U7j+WTVq45yAPECvBd0nRFc1/f7tUQwN1XPApM9W1LoBD+o7onfpDdTD/enTAvM=
+    - secure: MXRyMFqUu1cX7GUxd6dg17URVconcZDaUpq5Yv7aF9QC9fZGUGsZkUy/6m++KqoW90xpovWgHEjZVudoUZO6HN31HvUDcmpS9L8oNHD3OHQdfVg/RIqtTS7PiNxk52wWt3FqGkcwzLCLWOG6Q+7hQqdPoFN/iKjXMAyB4zOaplS+YsA84s2UFYFE5vCq0joihfQt7CI0RoIoZIT05MCR6gxVYThkG5GXuS9A0udQogwOlZuEJJA+Z5N01FBc0Il/r3THsQTXxSlS6OmLKS4nZUpK+Dw/apsbCfTcBxvAoBqPbTpRBlAg8HlTH3IWzfgBb/LgrMZBEgIddVZGtdldGdFRrQTHCS9QegzHi0EgiAaWhQWdhPic1bAUKzX4/GOl1jMPifj4i8nPgibhR8XfL32rQ09a1rSt+JzoNtsoL82ehpXoCQKvcr0qrlpnmvZKVoXpUwrUS8vhcAGwocVdTevxbfNmpvbadNNb7NTTz7D90QiFdRvdWRVhVLw0fRMM5sJkPUQAO/8WXG0sLd3RDKu1l2waR/d3Qcl8C1cwKY/3b6HRWYqbK/vevYMCrIREE1aYy5i/7HfxnfBdwmtsMHSQONXF5/wGpAVdvqxsrt3pUVwJpidSHe59FW7IPVXTEQkDJIa4KKSWXz6LPQzj2IZAyaQwmUN3BM2/6teMnIA=
     before_install:
     - openssl aes-256-cbc -K $encrypted_937fc597ef3a_key -iv $encrypted_937fc597ef3a_iv -in login_mar12.pem.enc -out login_mar12.pem -d
     install: skip
     script:
     - chmod 400 "login_mar12.pem"
     - ls -al login_mar12.pem
-    - scp -o "StrictHostKeyChecking no" -r -i "login_mar12.pem" mysql-img/my-sqlscript/createtable.sql $MACHINE:/home/ubuntu/
-    - scp -o "StrictHostKeyChecking no" -r -i "login_mar12.pem" mysql-img/my-sqlscript/storedProcedure.sql $MACHINE:/home/ubuntu/
-    - ssh  -o "StrictHostKeyChecking no" -i "login_mar12.pem" $MACHINE 'bash -s'
-      < .travis/deploy.sh
+    - scp -o "StrictHostKeyChecking no" -r -i "login_mar12.pem" mysql-img/my-sqlscript/createtable.sql
+      $MACHINE:/home/ubuntu/
+    - scp -o "StrictHostKeyChecking no" -r -i "login_mar12.pem" mysql-img/my-sqlscript/storedProcedure.sql
+      $MACHINE:/home/ubuntu/
+    - ssh  -o "StrictHostKeyChecking no" -i "login_mar12.pem" $MACHINE 'bash -s' <
+      .travis/deploy.sh
