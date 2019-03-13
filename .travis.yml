@@ -18,23 +18,19 @@ jobs:
     script:
     - echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
     - export REPO="aravin008/flaskapp"
-    - export REPO2="aravin008/my-sql"
     - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo
       $TRAVIS_BRANCH ; fi`
     - docker build -f Dockerfile -t $REPO:$TAG .
-    - cd mysql-img
-    - docker build -f Dockerfile -t $REPO2:$TAG .
-    - cd ..
     - docker image ls
     - echo "REPO:$REPO"
     - docker push $REPO
-    - docker push $REPO2
   - stage: deploy2
     env:
     - secure: ks7qZAdRvL63o+q7gY/aiX0ea6426NyIeDN8+XPtHfiz3dt/oNvrrjTkb1ThvYaUjyQUk98gUQvQDJd4zN6QFCPNXFSqJTqtzif8TAft3cMY75opQIwwWQ/xQxVWmKv/H/06WPU0Gx1nRUQ5btxgGapyyz+b/cIGrm7nzCBEYUaksC9ztWiD1NIW/JgwDmjnNcWJTRBc7gKqC0gCnW2x8wujANAF7AaEVQYbRc9XnKv8KJn0hBc9rJhGFZps/VxIFnOchobUF7DmGD5Y3APe4cJtAJ55VNy1KeAiFwlI9YY5+eiUGEfSafsT8vA17yJl54R945MqgbmbAI4tAL+ihx2xPkbNTJsg1A0wjMUV/2uvXFVBBEAik1onRhb03duPx/kAIWo2MTfA2RSs6cVQzhDhee+oqQk0TvD0BYSU1wSg3CppgwQePqFlJtK9l7K8f94qBIZ6vKMhIho2q00VvVFv35MK8EBJ9kX+1Nr9y4PQ1XHsah8lQTsjZnq87M1r4mkaU54p1xmasiEjH/KtxV/GKgLA+6roRxoePU8jW8fztT0/z3P4oW8aNeZXalYbT+EV7LwGIix2NZtX26N0r7QEl5r4vYhvxZxSRv4+NoV/U7j+WTVq45yAPECvBd0nRFc1/f7tUQwN1XPApM9W1LoBD+o7onfpDdTD/enTAvM=
     - secure: MXRyMFqUu1cX7GUxd6dg17URVconcZDaUpq5Yv7aF9QC9fZGUGsZkUy/6m++KqoW90xpovWgHEjZVudoUZO6HN31HvUDcmpS9L8oNHD3OHQdfVg/RIqtTS7PiNxk52wWt3FqGkcwzLCLWOG6Q+7hQqdPoFN/iKjXMAyB4zOaplS+YsA84s2UFYFE5vCq0joihfQt7CI0RoIoZIT05MCR6gxVYThkG5GXuS9A0udQogwOlZuEJJA+Z5N01FBc0Il/r3THsQTXxSlS6OmLKS4nZUpK+Dw/apsbCfTcBxvAoBqPbTpRBlAg8HlTH3IWzfgBb/LgrMZBEgIddVZGtdldGdFRrQTHCS9QegzHi0EgiAaWhQWdhPic1bAUKzX4/GOl1jMPifj4i8nPgibhR8XfL32rQ09a1rSt+JzoNtsoL82ehpXoCQKvcr0qrlpnmvZKVoXpUwrUS8vhcAGwocVdTevxbfNmpvbadNNb7NTTz7D90QiFdRvdWRVhVLw0fRMM5sJkPUQAO/8WXG0sLd3RDKu1l2waR/d3Qcl8C1cwKY/3b6HRWYqbK/vevYMCrIREE1aYy5i/7HfxnfBdwmtsMHSQONXF5/wGpAVdvqxsrt3pUVwJpidSHe59FW7IPVXTEQkDJIa4KKSWXz6LPQzj2IZAyaQwmUN3BM2/6teMnIA=
     before_install:
-    - openssl aes-256-cbc -K $encrypted_937fc597ef3a_key -iv $encrypted_937fc597ef3a_iv -in login_mar12.pem.enc -out login_mar12.pem -d
+    - openssl aes-256-cbc -K $encrypted_937fc597ef3a_key -iv $encrypted_937fc597ef3a_iv
+      -in login_mar12.pem.enc -out login_mar12.pem -d
     install: skip
     script:
     - chmod 400 "login_mar12.pem"
@@ -45,3 +41,12 @@ jobs:
       $MACHINE:/home/ubuntu/
     - ssh  -o "StrictHostKeyChecking no" -i "login_mar12.pem" $MACHINE 'bash -s' <
       .travis/deploy.sh
+env:
+  global:
+  - secure: LBmdQdDhib5qEZz8R4NUJNqYRTrw1BsJQ9Dc6AFd3tUsGE3SF3+cnUwkPYeBh0pOaU6V9ke9Grc+0Uln3Cg6CF8DJkMSlYUM2HR3oEWVI6DTP14FvgF3wBhNJOA2CdZhfVbWxAYDEghpXjEjWMKQp+os1btobD441r0OiTryNBXng67VGaZq8oRNnls6XL52yDSsHUFSYSbgDv7vnMsc6ACTR3ZdcLKtE9m0XSUX4X6fye57fJGBr3Uj7UX7+5W9Iuy7z4BnR5qzxi80oNnIK9VvVPUX0rmCJeuc/i/JflPBLNqOT2JdsUFJUQHqUB0s5wuZeWKf6lPuNOSS49k3EL7vn+Vz+IOtlalrvr4Svdms5brRjELNHkoP1NyXZYEYeBP72rOTz5fYRYWSn4RSmxALkR0uzFzxcu0xvaCRfRfubxVc832pgpiHNNOwcWFFHTz08SRZOHG1rQLFsgSSmRBW8+WUPzxDrYlmfG6B3c4F6avNnzYv9WlccTaOGIhsDS7iS/0+5dmHhaQws2/S9ESWUpCZsLECi390Dxg2wHM9+A2fA5+u1MknEG5oG0Pp5C9gu0YoBPfJqwDw2FjUZblFVuKtX7hvN9jGxbgb2vTOsXx85bu6kXWg7CYL7cn9B+h9+TTfuYeHREY2gPMfMyyFq4zZNi2oe76HaHv84PU=
+  - secure: qDDfb5ycF3r5K71ZgxXAI2t39zHq8s4Znbqh9bI22w8IuZ74S1MuLbaJNJNu5Z5ntjYJDgQ05EA7SDn2sxa0LtvNTupr80LCuc9MQI2wjOuHxrdT1PjxaXeDE1ZMoPzFShCQJMlbaVpgAVyNuyTTYSnR6DSD4OPIAB4ysv4jcZ+xMCvsAGNiws64ABETd4A+nmIK2X2xQO7lJtE/ZJjelndBoOZIsaaLcL9dzKOD0KniE1m6Y5qhhn/OG/NmN/684+rSA86HUwHTnEqhaWmGYI2aBCQ7D/wxVNVyyVtx6XPhSx1p86Lax79KGURvMR99nbxmSBSIuAjFctHGfWGaqOyanv+AaR/QtNzCPxmWT4GDwMcQYSPIs2WX8IJUIeC/DXVLwuqNKpdvDrsP35q0Y7V6Uma+fCy2RNyKmYv0iZlz9XKZkOkfGGrCqmi2g4EWrApkzA2SeT9Spi70sCPm1EBp3Ohj65aCRS2Fbj7woAs5yHXDPg6p/U/3ROC2dUOMmJVsCzeARiYREK5mBanEod6nwtNzlfMur6+AGVgmqCDmsfTxBY9YDb7WZa207iasPZB6t6/0GYzWlOONjNleVTsGX5wkkANA5sv1unxeyILTUwSEzkPbLElLGIpZO2fi5/v2FXftyB1uILaJsmoMohloy00/w60reCUOIRhjqRQ=
+before_install:
+- openssl aes-256-cbc -K $encrypted_937fc597ef3a_key -iv $encrypted_937fc597ef3a_iv
+  -in deploy.sh.enc -out .travis/deploy.sh -d
+- openssl aes-256-cbc -K $encrypted_937fc597ef3a_key -iv $encrypted_937fc597ef3a_iv
+  -in login_mar12.pem.enc -out login_mar12.pem -d
