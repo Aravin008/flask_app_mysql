@@ -29,9 +29,8 @@ jobs:
     - secure: LBmdQdDhib5qEZz8R4NUJNqYRTrw1BsJQ9Dc6AFd3tUsGE3SF3+cnUwkPYeBh0pOaU6V9ke9Grc+0Uln3Cg6CF8DJkMSlYUM2HR3oEWVI6DTP14FvgF3wBhNJOA2CdZhfVbWxAYDEghpXjEjWMKQp+os1btobD441r0OiTryNBXng67VGaZq8oRNnls6XL52yDSsHUFSYSbgDv7vnMsc6ACTR3ZdcLKtE9m0XSUX4X6fye57fJGBr3Uj7UX7+5W9Iuy7z4BnR5qzxi80oNnIK9VvVPUX0rmCJeuc/i/JflPBLNqOT2JdsUFJUQHqUB0s5wuZeWKf6lPuNOSS49k3EL7vn+Vz+IOtlalrvr4Svdms5brRjELNHkoP1NyXZYEYeBP72rOTz5fYRYWSn4RSmxALkR0uzFzxcu0xvaCRfRfubxVc832pgpiHNNOwcWFFHTz08SRZOHG1rQLFsgSSmRBW8+WUPzxDrYlmfG6B3c4F6avNnzYv9WlccTaOGIhsDS7iS/0+5dmHhaQws2/S9ESWUpCZsLECi390Dxg2wHM9+A2fA5+u1MknEG5oG0Pp5C9gu0YoBPfJqwDw2FjUZblFVuKtX7hvN9jGxbgb2vTOsXx85bu6kXWg7CYL7cn9B+h9+TTfuYeHREY2gPMfMyyFq4zZNi2oe76HaHv84PU=
     - secure: qDDfb5ycF3r5K71ZgxXAI2t39zHq8s4Znbqh9bI22w8IuZ74S1MuLbaJNJNu5Z5ntjYJDgQ05EA7SDn2sxa0LtvNTupr80LCuc9MQI2wjOuHxrdT1PjxaXeDE1ZMoPzFShCQJMlbaVpgAVyNuyTTYSnR6DSD4OPIAB4ysv4jcZ+xMCvsAGNiws64ABETd4A+nmIK2X2xQO7lJtE/ZJjelndBoOZIsaaLcL9dzKOD0KniE1m6Y5qhhn/OG/NmN/684+rSA86HUwHTnEqhaWmGYI2aBCQ7D/wxVNVyyVtx6XPhSx1p86Lax79KGURvMR99nbxmSBSIuAjFctHGfWGaqOyanv+AaR/QtNzCPxmWT4GDwMcQYSPIs2WX8IJUIeC/DXVLwuqNKpdvDrsP35q0Y7V6Uma+fCy2RNyKmYv0iZlz9XKZkOkfGGrCqmi2g4EWrApkzA2SeT9Spi70sCPm1EBp3Ohj65aCRS2Fbj7woAs5yHXDPg6p/U/3ROC2dUOMmJVsCzeARiYREK5mBanEod6nwtNzlfMur6+AGVgmqCDmsfTxBY9YDb7WZa207iasPZB6t6/0GYzWlOONjNleVTsGX5wkkANA5sv1unxeyILTUwSEzkPbLElLGIpZO2fi5/v2FXftyB1uILaJsmoMohloy00/w60reCUOIRhjqRQ=
     before_install:
-    - openssl aes-256-cbc -K $encrypted_937fc597ef3a_key -iv $encrypted_937fc597ef3a_iv -in deploy.sh.enc -out deploy.sh -d
-    - openssl aes-256-cbc -K $encrypted_937fc597ef3a_key -iv $encrypted_937fc597ef3a_iv
-      -in login_mar12.pem.enc -out login_mar12.pem -d
+    - openssl aes-256-cbc -K $encrypted_937fc597ef3a_key -iv $encrypted_937fc597ef3a_iv -in secrets.tar.enc -out secrets.tar -d 
+    - tar xvf secrets.tar
     install: skip
     script:
     - chmod 400 "login_mar12.pem"
